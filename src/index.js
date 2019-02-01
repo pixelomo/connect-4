@@ -1,27 +1,28 @@
-/* eslint-disable import/default */
-
-import React from 'react';
+import React from "react";
 import { render } from 'react-dom';
+import configureStore from "./configureStore";
+// import { Provider } from "react-redux";
 import { AppContainer } from 'react-hot-loader';
-import configureStore, { history } from './store/configureStore';
-import Root from './components/Root';
-import './styles/styles.scss'; 
+import Root from './containers/Root';
+import Board from "./containers/Board";
+import App from "./containers/App";
+// import './styles/styles.scss'; 
 require('./favicon.ico'); 
 const store = configureStore();
 
 render(
   <AppContainer>
-    <Root store={store} history={history} />
+    <Root store={store} />
   </AppContainer>,
   document.getElementById('app')
 );
 
 if (module.hot) {
-  module.hot.accept('./components/Root', () => {
-    const NewRoot = require('./components/Root').default;
+  module.hot.accept('./containers/Root', () => {
+    const NewRoot = require('./containers/Root').default;
     render(
       <AppContainer>
-        <NewRoot store={store} history={history} />
+        <NewRoot store={store} />
       </AppContainer>,
       document.getElementById('app')
     );

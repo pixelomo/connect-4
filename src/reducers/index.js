@@ -1,8 +1,6 @@
-import { combineReducers } from 'redux';
-import fuelSavings from './fuelSavingsReducer';
+import { combineReducers } from "redux";
+import filter from "./filter";
 
-const rootReducer = combineReducers({
-  fuelSavings,
+export default combineReducers({
+  filter
 });
-
-export default rootReducer;
