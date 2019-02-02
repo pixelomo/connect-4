@@ -14,7 +14,6 @@ class App extends React.Component {
 
 App.propTypes = {
   children: PropTypes.element,
-  // sendSelected: PropTypes.function
 };
 
 export default hot(module)(App);

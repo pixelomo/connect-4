@@ -5,10 +5,6 @@ import styled from "styled-components";
 
 class Slot extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   onSlotClicked(){
     this.props.sendSelected(this.props.x)
   }
@@ -27,6 +23,7 @@ class Slot extends React.Component {
     return (
       <SlotComponent className={slot} onClick={() => this.onSlotClicked()}>
         <div className='circle'></div>
+        {/* <div className='circle'>{y}, {x}</div> */}
       </SlotComponent>
     );
   }
@@ -54,7 +51,6 @@ const SlotComponent = styled.div`
   padding: 10px;
   .circle{
     background: #fff;
-    /* background: ${props => (props.owner === 'R' ? "#ff354b" : props.owner === 'Y' ? '#fffe00' : "#fff")}; */
     width: 100px;
     height: 100px;
     border-radius: 50%;

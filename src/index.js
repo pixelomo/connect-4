@@ -3,9 +3,8 @@ import { render } from 'react-dom';
 import configureStore from "./configureStore";
 import { AppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
-import Board from "./containers/Board";
-import App from "./containers/App";
 require('./favicon.ico'); 
+require('./index.css'); 
 const store = configureStore();
 
 render(
