@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import filter from "./filter";
+import player from "./player";
+import board from "./board";
 
 export default combineReducers({
-  filter
+  player,
+  board
 });

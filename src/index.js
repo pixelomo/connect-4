@@ -1,12 +1,10 @@
 import React from "react";
 import { render } from 'react-dom';
 import configureStore from "./configureStore";
-// import { Provider } from "react-redux";
 import { AppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
 import Board from "./containers/Board";
 import App from "./containers/App";
-// import './styles/styles.scss'; 
 require('./favicon.ico'); 
 const store = configureStore();
 
