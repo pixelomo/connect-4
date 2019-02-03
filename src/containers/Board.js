@@ -34,14 +34,18 @@ class Board extends React.Component {
   render() {
     return (
       <Wrapper>
+      {/* <p>{this.props.winner.toString()}</p> */}
         <BoardContainer winner={this.props.winner.toString() !== ''}>
           {this.renderSlots()}
         </BoardContainer>
         <Winner winner={this.props.winner.toString() !== ''}>The Winner is 
           <span>{' '}{this.props.winner.toString()}!</span>
-          <button onClick={() => this.startGame()}>NEW GAME</button>
+          <button onClick={() => this.startGame()}>New Game</button>
         </Winner>
-        {/* <Winner winner={this.props.tie}>It's a Tie</Winner> */}
+        {/* <Winner winner={this.props.tie.toString()}>It's a Tie</Winner> */}
+        <p className="red">Red</p>
+        <div className={this.props.player === 'red' ? 'red disc' : 'yellow disc'}/>
+        <p className="yellow">Yellow</p>
       </Wrapper>
     );
   }
@@ -49,17 +53,72 @@ class Board extends React.Component {
 
 const stateToProps = state => {
   return {
-    winner: state.board.winner,
-    tie: state.board.tie
+    winner: state.winner,
+    player: state.board.player
   } 
 }
 
 export default connect(stateToProps)(Board);
 
 ////////////CSS/////////////
+const BoardContainer = styled.div`
+  pointer-events: ${props => (props.winner ? 'none' : 'all')};
+  margin: 60px auto 30px;
+  text-align: center;
+  border-radius: 32px;
+  border: 10px solid dodgerblue;
+  width: calc(140px * 7);
+  overflow: hidden;
+`;
+
 const Wrapper = styled.div`
   position: relative;
-  @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+  @import url('https://fonts.googleapis.com/css?family=Pacifico');
+  font-family: 'Pacifico', cursive;
+  p{
+    font-size: 42px;
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    margin-top: 0;
+    &.red{
+      color: #b30619;
+    }
+    &.yellow{
+      color: #c7c70d;
+    }
+  }
+  .disc{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    bottom: 52px;
+    left: 0; right: 0;
+    margin: auto;
+    transform: translate3d(-200px,0,0);
+    display: flex;
+    align-items: center;
+    background: #b30619;
+    &:after{
+      content: '';
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      left: 0; right: 0;
+      margin: auto;
+      background: #ff354b;
+      transition: 1s ease-in-out;
+      -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    &.yellow{
+      background: #c7c70d;
+      transform: translate3d(200px,0,0) rotate(-215deg);
+      &:after{background: #fffe00; }
+    }
+  }
 `;
 
 const Winner = styled.div`
@@ -71,7 +130,6 @@ const Winner = styled.div`
   color: dodgerblue;
   padding: 15px;
   font-size: 40px;
-  font-family: 'Josefin Sans', sans-serif;
   border-top: 10px solid dodgerblue;
   border-bottom: 10px solid dodgerblue;
   left: 0;
@@ -81,15 +139,14 @@ const Winner = styled.div`
   width: 100%;
   box-shadow: 1px 1px 16px #7e7f80a1;
   span{
-    text-transform: uppercase;
+    text-transform: capitalize;
     /* color: ${props => (props.winner ? '#ff354b' : '#fffe00')}; */
     /* text-shadow: ${props => (props.winner === 'red' ? '-2px 2px 5px #fffe00' : '-2px 2px 5px #c7c70d;')}; */
   }
   button{
     padding: 8px;
-    text-transform: uppercase;
     color: dodgerblue;
-    border: 3px solid dodgerblue;
+    border: 5px solid dodgerblue;
     background: white;
     border-radius: 5px;
     position: absolute;
@@ -97,18 +154,11 @@ const Winner = styled.div`
     right: 0;
     left: 0;
     margin: auto;
-    width: 210px;
+    width: 250px;
     cursor: pointer;
-    bottom: -90px;
+    bottom: -120px;
+    font-family: 'Pacifico', cursive;
+    box-shadow: 1px 1px 16px #7e7f80a1;
   }
 `;
 
-const BoardContainer = styled.div`
-  pointer-events: ${props => (props.winner ? 'none' : 'all')};
-  margin: 80px auto;
-  text-align: center;
-  border-radius: 32px;
-  border: 10px solid dodgerblue;
-  width: calc(140px * 7);
-  overflow: hidden;
-`;

@@ -13,7 +13,7 @@ class Slot extends React.Component {
     const {x, y, b} = this.props
     let slot = 'slot'
 
-    if(b.board[x][y] !== undefined){ 
+    if(b.board[x][y] !== ''){ 
       if(b.board[x][y] === 'red'){
         slot += ' red';
       } else {
@@ -67,27 +67,25 @@ const SlotComponent = styled.div`
       position: absolute;
       left: 0; right: 0;
       margin: auto;
-      transition: .1s ease-in-out;
+      opacity: 0;
+      -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
   }
   &.red .circle{ 
     background: #ff354b;
     box-shadow: 3px 3px 10px #b30619 inset, -3px -3px 10px #b30619 inset;
     &:after{
-      display: initial;
+      opacity: 1;
       background: #b30619;
-      -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
   }
   &.yellow .circle{
     background: #fffe00;
     box-shadow: 3px 3px 10px #c7c70d inset, -3px -3px 10px #c7c70d inset;
     &:after{
-      display: initial;
+      opacity: 1;
       background: #c7c70d;
-      -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
   }
 `;

@@ -5,9 +5,9 @@ const turns = (prevState = defaultTurnsState, action) => {
     return prevState + 1
   }
 
-  // if (action.type === 'NEW_GAME') {
-  //   return 0
-  // }
+  if (action.type === 'NEW_GAME') {
+    return 0
+  }
 
   return prevState
 }
