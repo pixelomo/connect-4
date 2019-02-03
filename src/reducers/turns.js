@@ -1,6 +1,6 @@
-const defaultTurnsState = 0
+const turnsState = 0
 
-const turns = (prevState = defaultTurnsState, action) => {
+const turns = (prevState = turnsState, action) => {
   if (action.type === 'SLOT_SELECTED') {
     return prevState + 1
   }

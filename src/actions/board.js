@@ -1,18 +1,18 @@
 export const slotSelected = (column) => {
     return (dispatch, getState) => {
-        const { turns, board } = getState()
-        let player = board.player
-        const slot = player;
-        const col = board.board[column].concat(slot);
+        const { turns, board, player } = getState()
+        // const slot = player;
+        // const col = board[column].concat(slot);
 
-        // if column full cancel move
-        if(col.length === 7){
-            return;
-        } 
+        // // if column full cancel move
+        // if(col.length === 7){
+        //     return;
+        // } 
         
         dispatch({ 
             type: 'SLOT_SELECTED', 
-            column: column
+            column: column,
+            player: player
         })
 
         // Check for tie
@@ -20,7 +20,7 @@ export const slotSelected = (column) => {
             dispatch({ type: 'DECLARE_TIE' })
         }
 
-        if (winningMove(board.board, player)) {
+        if (winningMove(board, player)) {
             dispatch({ type: 'DECLARE_WINNER', player })
         }
         

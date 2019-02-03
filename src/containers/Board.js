@@ -34,7 +34,6 @@ class Board extends React.Component {
   render() {
     return (
       <Wrapper>
-      {/* <p>{this.props.winner.toString()}</p> */}
         <BoardContainer winner={this.props.winner.toString() !== ''}>
           {this.renderSlots()}
         </BoardContainer>
@@ -42,7 +41,7 @@ class Board extends React.Component {
           <span>{' '}{this.props.winner.toString()}!</span>
           <button onClick={() => this.startGame()}>New Game</button>
         </Winner>
-        {/* <Winner winner={this.props.tie.toString()}>It's a Tie</Winner> */}
+        <Winner winner={this.props.winner.toString() === 'Tie'}>It's a Tie</Winner>
         <p className="red">Red</p>
         <div className={this.props.player === 'red' ? 'red disc' : 'yellow disc'}/>
         <p className="yellow">Yellow</p>
@@ -54,7 +53,7 @@ class Board extends React.Component {
 const stateToProps = state => {
   return {
     winner: state.winner,
-    player: state.board.player
+    player: state.player
   } 
 }
 

@@ -10,11 +10,12 @@ class Slot extends React.Component {
   }
 
   render() {
-    const {x, y, b} = this.props
+    const {x, y, board} = this.props
     let slot = 'slot'
+    console.log(board[1][0])
 
-    if(b.board[x][y] !== ''){ 
-      if(b.board[x][y] === 'red'){
+    if(board[x][y] !== '' || undefined){ 
+      if(board[x][y] === 'red'){
         slot += ' red';
       } else {
         slot += ' yellow';
@@ -31,7 +32,7 @@ class Slot extends React.Component {
 
 const stateToProps = state => {
   return {
-    b: state.board
+    board: state.board
   } 
 }
 
