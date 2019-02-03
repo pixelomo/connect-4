@@ -12,10 +12,14 @@ const initial = {
         [], // 6
     ],
     winner: '',
-    turns: 0
+    tie: false
 }
 
 const board = (state = initial, action) => {
+
+    if (action.type === 'NEW_GAME') {
+        return { ...initial }
+    }
 
     if (action.type === 'SLOT_SELECTED') {
         // console.log('Slot selected on column ' + action.column)
@@ -28,17 +32,26 @@ const board = (state = initial, action) => {
         const board = state.board.slice()
         board[action.column] = col
 
+        let winner = state.winner
+
         if (winningMove(board, state.player)) {
-            state.winner = state.player
+            winner = state.player
         }
 
         return{
             player: state.player === 'red' ? 'yellow' : 'red',
             board: board,
-            winner: state.winner
+            winner: winner
         }
-        
     } 
+    if (action.type === 'DECLARE_TIE') {
+        console.log('TIE')
+        state.tie = true
+
+        return{
+            tie: state.tie
+        }
+    }
     return state;
 }
 

@@ -1,1 +1,1 @@
-##Connect Four Redux Games
+ **Connect Four Redux Game**
