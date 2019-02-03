@@ -12,10 +12,9 @@ class Slot extends React.Component {
   render() {
     const {x, y, board} = this.props
     let slot = 'slot'
-    console.log(board[1][0])
 
-    if(board[x][y] !== '' || undefined){ 
-      if(board[x][y] === 'red'){
+    if(board[x][y] !== ""){ 
+      if(board[x][y] === "red"){
         slot += ' red';
       } else {
         slot += ' yellow';
@@ -24,13 +23,14 @@ class Slot extends React.Component {
     return (
       <SlotComponent className={slot} onClick={() => this.onSlotClicked()}>
         <div className='circle'></div>
-        {/* <div className='circle'>{y}, {x}</div> */}
+        {/* <div className='circle'>{x}, {y}</div> */}
       </SlotComponent>
     );
   }
 }
 
 const stateToProps = state => {
+  
   return {
     board: state.board
   } 
@@ -75,7 +75,7 @@ const SlotComponent = styled.div`
   }
   &.red .circle{ 
     background: #ff354b;
-    box-shadow: 3px 3px 10px #b30619 inset, -3px -3px 10px #b30619 inset;
+    box-shadow: 3px 3px 10px #b30619 inset, -3px -3px 10px #b30619 inset, -3px 3px 10px #b30619 inset, 3px -3px 10px #b30619 inset;
     &:after{
       opacity: 1;
       background: #b30619;
@@ -83,7 +83,7 @@ const SlotComponent = styled.div`
   }
   &.yellow .circle{
     background: #fffe00;
-    box-shadow: 3px 3px 10px #c7c70d inset, -3px -3px 10px #c7c70d inset;
+    box-shadow: 3px 3px 10px #c7c70d inset, -3px -3px 10px #c7c70d inset, -3px 3px 10px #c7c70d inset, 3px -3px 10px #c7c70d inset;
     &:after{
       opacity: 1;
       background: #c7c70d;
