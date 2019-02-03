@@ -6,6 +6,8 @@
  
  ![Screenshot](/src/screen.png)
 
-* git clone git@github.com:alansutherland/connect-4.git
-* yarn
-* yarn start
+``` 
+git clone git@github.com:alansutherland/connect-4.git
+yarn
+yarn start
+```
