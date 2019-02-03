@@ -1,3 +1,3 @@
  **Connect Four Redux Game**    
  
- ![Screenshot](screen.png)
+ ![Screenshot](/src/screen.png)
