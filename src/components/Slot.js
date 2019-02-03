@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { slotSelected } from '../actions/board'
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 class Slot extends React.Component {
 
@@ -36,6 +37,15 @@ const stateToProps = state => {
     player: state.player
   } 
 }
+
+Slot.propTypes = {
+  winner: PropTypes.string,
+  player: PropTypes.string,
+  x: PropTypes.string,
+  y: PropTypes.string,
+  board: PropTypes.array,
+  dispatch: PropTypes.func,
+};
 
 export default connect(stateToProps)(Slot);
 

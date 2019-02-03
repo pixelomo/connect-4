@@ -21,7 +21,7 @@ export const slotSelected = (player, column) => {
       dispatch({ type: "DECLARE_WINNER", player });
     }
 
-    if (turns === 41) {
+    if (turns === 42) {
         dispatch({ type: "DECLARE_TIE" });
       }
   };

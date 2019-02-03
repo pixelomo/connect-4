@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import Slot from "../components/Slot";
 import { newGame } from "../actions/new";
-import { declareWinner } from "../actions/winner";
+import PropTypes from "prop-types";
 
 class Board extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class Board extends React.Component {
           <button onClick={() => this.startGame()}>New Game</button>
         </Winner>
         <Winner winner={winner === "Tie"}>
-          It's a Tie
+          It is a Tie
           <button onClick={() => this.startGame()}>New Game</button>
         </Winner>
         <p className="red">Red</p>
@@ -60,6 +60,12 @@ const stateToProps = state => {
     player: state.player,
     board: state.board
   };
+};
+
+Board.propTypes = {
+  winner: PropTypes.string,
+  player: PropTypes.string,
+  dispatch: PropTypes.func,
 };
 
 export default connect(stateToProps)(Board);
