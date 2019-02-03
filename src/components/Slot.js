@@ -7,8 +7,18 @@ import PropTypes from "prop-types";
 class Slot extends React.Component {
 
   onSlotClicked(){
-    const { dispatch } = this.props;
-    dispatch(slotSelected(this.props.player,this.props.x))
+
+    const col = this.props.board[this.props.x].concat(this.props.player);
+    // if column full cancel move
+    function noneEmpty(arr) {
+      return arr.indexOf("") === -1;
+    }
+    if(noneEmpty(col)){
+        return;
+    } else {
+      const { dispatch } = this.props;
+      dispatch(slotSelected(this.props.player,this.props.x))
+    }
   }
 
   render() {
@@ -41,8 +51,8 @@ const stateToProps = state => {
 Slot.propTypes = {
   winner: PropTypes.string,
   player: PropTypes.string,
-  x: PropTypes.string,
-  y: PropTypes.string,
+  x: PropTypes.number,
+  y: PropTypes.number,
   board: PropTypes.array,
   dispatch: PropTypes.func,
 };

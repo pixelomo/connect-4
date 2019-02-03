@@ -1,13 +1,5 @@
 export const slotSelected = (player, column) => {
   return (dispatch, getState) => {
-    // const { turns, board, player } = getState();
-    // const slot = player;
-    // const col = board[column].concat(slot);
-
-    // if column full cancel move
-    // if(col.length === 7){
-    //     return;
-    // }
 
     dispatch({
       type: "SLOT_SELECTED",
