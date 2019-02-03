@@ -6,7 +6,8 @@ import styled from "styled-components";
 class Slot extends React.Component {
 
   onSlotClicked(){
-    this.props.sendSelected(this.props.x)
+    const { dispatch } = this.props;
+    dispatch(slotSelected(this.props.player,this.props.x))
   }
 
   render() {
@@ -30,19 +31,13 @@ class Slot extends React.Component {
 }
 
 const stateToProps = state => {
-  
   return {
-    board: state.board
+    board: state.board,
+    player: state.player
   } 
 }
 
-const dispatchToProps = dispatch => {
-  return {
-    sendSelected: col => dispatch(slotSelected(col))
-  } 
-}
-
-export default connect(stateToProps, dispatchToProps)(Slot);
+export default connect(stateToProps)(Slot);
 
 ////////////////////////// CSS //////////////////////////
 const SlotComponent = styled.div`
