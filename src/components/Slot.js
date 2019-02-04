@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 class Slot extends React.Component {
 
   onSlotClicked(){
-
     const col = this.props.board[this.props.x].concat(this.props.player);
     // if column full cancel move
     function noneEmpty(arr) {
