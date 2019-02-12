@@ -10,7 +10,7 @@ class Slot extends React.Component {
     const col = this.props.board[this.props.x].concat(this.props.player);
     // if column full cancel move
     function noneEmpty(arr) {
-      return arr.indexOf("") === -1;
+      return arr.indexOf("O") === -1;
     }
     if(noneEmpty(col)){
         return;
@@ -24,7 +24,7 @@ class Slot extends React.Component {
     const {x, y, board} = this.props
     let slot = 'slot'
 
-    if(board[x][y] !== ""){ 
+    if(board[x][y] !== "O"){ 
       if(board[x][y] === "red"){
         slot += ' red';
       } else {
